@@ -8,14 +8,14 @@
 <style>
 body {
   margin: 0;
-  font-family: 'Courier New', monospace;
-  background: linear-gradient(180deg, #0f0f2d, #1a0033);
+  font-family: "Courier New", monospace;
+  background: linear-gradient(180deg, #0f0026, #001a33);
   color: white;
   text-align: center;
   overflow-x: hidden;
 }
 
-/* Fondo animado */
+/* Fondo Y2K animado */
 body::before {
   content: "";
   position: fixed;
@@ -24,7 +24,7 @@ body::before {
   background: radial-gradient(circle, #ff66cc33 10%, transparent 10%),
               radial-gradient(circle, #66ccff33 10%, transparent 10%);
   background-size: 80px 80px;
-  animation: moveBg 20s linear infinite;
+  animation: moveBg 25s linear infinite;
   z-index: -1;
 }
 
@@ -33,27 +33,65 @@ body::before {
   to { transform: translate(-200px,-200px); }
 }
 
-h1 {
-  margin-top: 40px;
-  font-size: 26px;
-  text-shadow: 0 0 15px #ff66cc, 0 0 25px #66ccff;
+/* Texto principal */
+.love-text {
+  margin: 40px 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-shadow: 0 0 10px #ff66cc, 0 0 20px #66ccff;
 }
 
+/* Player */
+.player {
+  margin-top: 20px;
+}
+
+#musicBtn {
+  background: linear-gradient(90deg, #ff66cc, #66ccff);
+  border: 2px solid white;
+  padding: 10px 20px;
+  color: white;
+  font-family: "Courier New", monospace;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff66cc;
+  transition: 0.3s;
+}
+
+#musicBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #66ccff;
+}
+
+/* Galería flotante */
 .gallery {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 .photo {
-  margin: 25px 0;
+  margin: 20px;
+  position: relative;
+  animation: float 4s ease-in-out infinite;
+}
+
+.photo:nth-child(2) { animation-delay: 1s; }
+.photo:nth-child(3) { animation-delay: 2s; }
+.photo:nth-child(4) { animation-delay: 3s; }
+.photo:nth-child(5) { animation-delay: 4s; }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
 }
 
 .photo img {
-  width: 250px;
+  width: 200px;
   border-radius: 20px;
   box-shadow: 0 0 20px #ff66cc;
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -62,48 +100,34 @@ h1 {
   box-shadow: 0 0 30px #66ccff;
 }
 
-.caption {
+.message {
   margin-top: 10px;
   font-size: 14px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px #ff66cc;
-}
-
-/* Player */
-.player {
-  margin: 40px 0;
-}
-
-#musicBtn {
-  background: linear-gradient(90deg, #ff66cc, #66ccff);
-  border: 2px solid white;
-  padding: 12px 25px;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 0 15px #ff66cc;
-  transition: 0.3s;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-#musicBtn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px #66ccff;
+  text-shadow: 0 0 10px #ff66cc;
+  min-height: 40px;
 }
 
 footer {
-  margin: 40px 0;
+  margin: 50px 0;
   font-size: 12px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
-<h1>ACCESSING SHARITON.EXE 💿💗</h1>
+<div class="love-text">
+eres el amor de mi vida, mi vida<br>
+mi alma entera<br>
+te amo más de lo que sabes que te amo<br>
+te pienso todo el tiempo, te veo en todo lo que me dijiste que te gusta<br><br>
+
+por un primer san Valentin juntitos, a la distancia, pero recuerda, que no siempre será así<br><br>
+
+ya llegará el día en que nos veamos<br>
+te amo mi shariton, te amo muxo muxo mass, 100pre y para 100pre 💗
+</div>
 
 <div class="player">
   <button id="musicBtn" onclick="toggleMusic()">▶ Shariton Player 2004</button>
@@ -116,49 +140,68 @@ footer {
 <div class="gallery">
 
   <div class="photo">
-    <img src="angel1.jpg">
-    <div class="caption">Eres mi lugar favorito en todo el universo 💗</div>
+    <img src="angel1.jpg" onclick="changeMessage(0)">
+    <div class="message" id="msg0"></div>
   </div>
 
   <div class="photo">
-    <img src="angel2.jpg">
-    <div class="caption">Contigo todo se siente más bonito ✨</div>
+    <img src="angel2.jpg" onclick="changeMessage(1)">
+    <div class="message" id="msg1"></div>
   </div>
 
   <div class="photo">
-    <img src="angel3.jpg">
-    <div class="caption">Tu sonrisa ilumina hasta mis días más grises 🌌</div>
+    <img src="angel3.jpg" onclick="changeMessage(2)">
+    <div class="message" id="msg2"></div>
   </div>
 
   <div class="photo">
-    <img src="angel4.jpg">
-    <div class="caption">Eres mi sueño hecho realidad 💿</div>
+    <img src="angel4.jpg" onclick="changeMessage(3)">
+    <div class="message" id="msg3"></div>
   </div>
 
   <div class="photo">
-    <img src="angel5.jpg">
-    <div class="caption">Te amo más de lo que las palabras pueden explicar 💙</div>
+    <img src="angel5.jpg" onclick="changeMessage(4)">
+    <div class="message" id="msg4"></div>
   </div>
 
 </div>
 
 <footer>
-Shariton.exe — Powered by Mako 💻💗
+Shariton.exe — powered by Mako 💻🩷
 </footer>
 
 <script>
-  const music = document.getElementById("bg-music");
-  const button = document.getElementById("musicBtn");
+const music = document.getElementById("bg-music");
+const button = document.getElementById("musicBtn");
 
-  function toggleMusic() {
-    if (music.paused) {
-      music.play();
-      button.innerHTML = "⏸ Shariton Player 2004";
-    } else {
-      music.pause();
-      button.innerHTML = "▶ Shariton Player 2004";
-    }
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    button.innerHTML = "⏸ Shariton Player 2004";
+  } else {
+    music.pause();
+    button.innerHTML = "▶ Shariton Player 2004";
   }
+}
+
+const phrases = [
+  ["Eres mi universo entero 💫", "Tu sonrisa me salva todos los días ✨", "Siempre tú, siempre nosotros 💗"],
+  ["Me encantas más cada día 💙", "Eres mi pensamiento favorito 🩷", "Contigo todo es mejor 🌸"],
+  ["Mi paz tiene tu nombre 💞", "Tu voz es mi lugar seguro 🌌", "Te elegiría mil veces 💿"],
+  ["Eres mi sueño bonito 💭", "Te amo más allá del tiempo ⏳", "Mi corazón es tuyo 💓"],
+  ["Siempre tú, 100pre 💗", "Mi shariton hermosa 🩷", "Para 100pre y más allá 🌙"]
+];
+
+let counters = [0,0,0,0,0];
+
+function changeMessage(index) {
+  const messageBox = document.getElementById("msg" + index);
+  messageBox.innerHTML = phrases[index][counters[index]];
+  counters[index]++;
+  if (counters[index] >= phrases[index].length) {
+    counters[index] = 0;
+  }
+}
 </script>
 
 </body>
