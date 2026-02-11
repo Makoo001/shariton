@@ -3,243 +3,162 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shariton.exe</title>
+<title>Shariton.exe 💿</title>
 
 <style>
-
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(135deg, #ff8fd8, #7ecbff);
-    overflow-x: hidden;
-    color: white;
+  margin: 0;
+  font-family: 'Courier New', monospace;
+  background: linear-gradient(180deg, #0f0f2d, #1a0033);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
 }
 
-/* GRID CYBER */
+/* Fondo animado */
 body::before {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: moveGrid 20s linear infinite;
-    z-index: 0;
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #ff66cc33 10%, transparent 10%),
+              radial-gradient(circle, #66ccff33 10%, transparent 10%);
+  background-size: 80px 80px;
+  animation: moveBg 20s linear infinite;
+  z-index: -1;
 }
 
-@keyframes moveGrid {
-    from { transform: translate(0,0); }
-    to { transform: translate(-50px, -50px); }
-}
-
-/* VENTANA */
-.window {
-    position: relative;
-    width: 90%;
-    max-width: 750px;
-    margin: 6vh auto;
-    background: rgba(0,0,40,0.75);
-    border: 2px solid white;
-    box-shadow: 0 0 25px #ff8fd8, 0 0 50px #7ecbff;
-    backdrop-filter: blur(10px);
-    border-radius: 12px;
-    z-index: 1;
-}
-
-.title-bar {
-    background: linear-gradient(90deg, #ff8fd8, #7ecbff);
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
-}
-
-.buttons span {
-    margin-left: 8px;
-    background: white;
-    color: black;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: bold;
-}
-
-.content {
-    padding: 25px;
-    text-align: center;
+@keyframes moveBg {
+  from { transform: translate(0,0); }
+  to { transform: translate(-200px,-200px); }
 }
 
 h1 {
-    text-shadow: 0 0 15px #ff8fd8, 0 0 25px #7ecbff;
+  margin-top: 40px;
+  font-size: 26px;
+  text-shadow: 0 0 15px #ff66cc, 0 0 25px #66ccff;
 }
 
-.sub {
-    margin-top: 30px;
-    text-shadow: 0 0 10px #ff8fd8;
-}
-
-/* FOTO PRINCIPAL */
-.main-photo {
-    width: 80%;
-    max-width: 320px;
-    border-radius: 15px;
-    margin-top: 20px;
-    box-shadow: 0 0 20px #ff8fd8, 0 0 40px #7ecbff;
-    animation: float 4s ease-in-out infinite;
-    cursor: pointer;
-}
-
-/* GALERIA */
 .gallery {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
 }
 
-.gallery img {
-    width: 100%;
-    max-width: 180px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px #7ecbff;
-    cursor: pointer;
-    transition: 0.3s;
+.photo {
+  margin: 25px 0;
 }
 
-.gallery img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 25px #ff8fd8, 0 0 40px #7ecbff;
+.photo img {
+  width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ff66cc;
+  transition: 0.3s;
 }
 
-/* BOTON */
-button {
-    margin-top: 25px;
-    padding: 12px 25px;
-    background: linear-gradient(45deg, #ff8fd8, #7ecbff);
-    border: none;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 8px;
+.photo img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px #66ccff;
 }
 
-/* MENSAJE RETRO */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,60,0.95);
-    border: 2px solid white;
-    padding: 20px;
-    box-shadow: 0 0 20px #ff8fd8, 0 0 40px #7ecbff;
-    border-radius: 10px;
-    text-align: center;
-    z-index: 999;
+.caption {
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px #ff66cc;
 }
 
-.popup button {
-    margin-top: 15px;
+/* Player */
+.player {
+  margin: 40px 0;
 }
 
-/* CORAZONES */
-.heart {
-    position: fixed;
-    font-size: 14px;
-    animation: fall linear infinite;
+#musicBtn {
+  background: linear-gradient(90deg, #ff66cc, #66ccff);
+  border: 2px solid white;
+  padding: 12px 25px;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 15px #ff66cc;
+  transition: 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
-@keyframes fall {
-    from { transform: translateY(-10vh); }
-    to { transform: translateY(110vh); }
+#musicBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 25px #66ccff;
 }
 
-@keyframes moveGrid {
-    from { transform: translate(0,0); }
-    to { transform: translate(-50px, -50px); }
+footer {
+  margin: 40px 0;
+  font-size: 12px;
+  opacity: 0.6;
 }
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-}
-
 </style>
 </head>
 
 <body>
 
-<audio id="bgMusic" loop>
-    <source src="musica.mp3" type="audio/mpeg">
-</audio>
+<h1>ACCESSING SHARITON.EXE 💿💗</h1>
 
-<div class="window">
-
-    <div class="title-bar">
-        <div>Shariton.exe</div>
-        <div class="buttons">
-            <span>_</span>
-            <span>□</span>
-            <span>X</span>
-        </div>
-    </div>
-
-    <div class="content">
-
-        <h1>Sistema detecta: la niña más hermosa del universo 💖</h1>
-
-        <p>
-            Tú eres mi universo rosado y mi cielo azul infinito.
-        </p>
-
-        <img src="angel1.jpg" class="main-photo" onclick="mostrarMensaje('Eres la casualidad más hermosa que llegó a mi vida 💗')">
-
-        <h2 class="sub">memories.exe</h2>
-
-        <div class="gallery">
-            <img src="angel2.jpg" onclick="mostrarMensaje('Tu sonrisa es mi lugar favorito 🌸')">
-            <img src="angel3.jpg" onclick="mostrarMensaje('Contigo todo se siente más bonito 💫')">
-            <img src="angel4.jpg" onclick="mostrarMensaje('Eres mi pensamiento favorito cada día 💕')">
-            <img src="angel5.jpg" onclick="mostrarMensaje('Gracias por existir en mi mundo 💖')">
-        </div>
-
-        <button onclick="playMusic()">▶ PLAY MY HEART</button>
-
-    </div>
+<div class="player">
+  <button id="musicBtn" onclick="toggleMusic()">▶ Shariton Player 2004</button>
 </div>
 
+<audio id="bg-music" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="gallery">
+
+  <div class="photo">
+    <img src="angel1.jpg">
+    <div class="caption">Eres mi lugar favorito en todo el universo 💗</div>
+  </div>
+
+  <div class="photo">
+    <img src="angel2.jpg">
+    <div class="caption">Contigo todo se siente más bonito ✨</div>
+  </div>
+
+  <div class="photo">
+    <img src="angel3.jpg">
+    <div class="caption">Tu sonrisa ilumina hasta mis días más grises 🌌</div>
+  </div>
+
+  <div class="photo">
+    <img src="angel4.jpg">
+    <div class="caption">Eres mi sueño hecho realidad 💿</div>
+  </div>
+
+  <div class="photo">
+    <img src="angel5.jpg">
+    <div class="caption">Te amo más de lo que las palabras pueden explicar 💙</div>
+  </div>
+
+</div>
+
+<footer>
+Shariton.exe — Powered by Mako 💻💗
+</footer>
+
 <script>
+  const music = document.getElementById("bg-music");
+  const button = document.getElementById("musicBtn");
 
-function playMusic(){
-    document.getElementById("bgMusic").play();
-}
-
-function mostrarMensaje(texto){
-    const popup = document.createElement("div");
-    popup.className = "popup";
-    popup.innerHTML = `
-        <p>${texto}</p>
-        <button onclick="this.parentElement.remove()">Cerrar</button>
-    `;
-    document.body.appendChild(popup);
-}
-
-/* CORAZONES */
-for(let i = 0; i < 35; i++){
-    let heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 5 + 5) + "s";
-    document.body.appendChild(heart);
-}
-
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      button.innerHTML = "⏸ Shariton Player 2004";
+    } else {
+      music.pause();
+      button.innerHTML = "▶ Shariton Player 2004";
+    }
+  }
 </script>
 
 </body>
