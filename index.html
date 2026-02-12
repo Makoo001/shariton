@@ -3,206 +3,276 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shariton.exe 💿</title>
+<title>+BLUEBLUE+ 💿</title>
 
 <style>
 body {
   margin: 0;
   font-family: "Courier New", monospace;
-  background: linear-gradient(180deg, #0f0026, #001a33);
   color: white;
   text-align: center;
   overflow-x: hidden;
+  transition: background 1s ease;
 }
 
-/* Fondo Y2K animado */
-body::before {
-  content: "";
+/* Fondos dinámicos */
+.bg1 { background: radial-gradient(circle, #1a0033, #000); }
+.bg2 { background: radial-gradient(circle, #001a33, #000); }
+.bg3 { background: radial-gradient(circle, #33001a, #000); }
+
+/* Estrellas */
+.stars {
   position: fixed;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, #ff66cc33 10%, transparent 10%),
-              radial-gradient(circle, #66ccff33 10%, transparent 10%);
-  background-size: 80px 80px;
-  animation: moveBg 25s linear infinite;
+  width: 100%;
+  height: 100%;
   z-index: -1;
 }
 
-@keyframes moveBg {
-  from { transform: translate(0,0); }
-  to { transform: translate(-200px,-200px); }
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  animation: twinkle 2s infinite alternate;
 }
 
-/* Texto principal */
-.love-text {
-  margin: 40px 20px;
-  font-size: 18px;
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+/* Glitch título */
+.glitch {
+  font-size: 32px;
+  margin-top: 40px;
+  color: #66ccff;
+  text-shadow: 0 0 15px #ff66cc;
+  animation: glitch 1s infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 #ff66cc, -2px 0 #66ccff; }
+  50% { text-shadow: -2px 0 #ff66cc, 2px 0 #66ccff; }
+  100% { text-shadow: 2px 0 #ff66cc, -2px 0 #66ccff; }
+}
+
+/* Dedicatoria */
+.dedication {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ff99dd;
+  text-shadow: 0 0 15px #66ccff;
+  animation: floatText 3s ease-in-out infinite;
+}
+
+@keyframes floatText {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.ep-description {
+  margin: 20px;
+  font-size: 16px;
   line-height: 1.6;
-  text-shadow: 0 0 10px #ff66cc, 0 0 20px #66ccff;
+  text-shadow: 0 0 10px #66ccff;
+}
+
+/* Imagen */
+.song-visual {
+  margin-top: 30px;
+}
+
+.song-visual img {
+  width: 220px;
+  border-radius: 20px;
+  box-shadow: 0 0 35px #66ccff;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.song-visual img.fade {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.song-message {
+  margin-top: 15px;
+  font-size: 15px;
+  text-shadow: 0 0 15px #ff66cc;
+  min-height: 40px;
 }
 
 /* Player */
 .player {
-  margin-top: 20px;
+  margin: 40px 0;
 }
 
-#musicBtn {
+.controls button {
   background: linear-gradient(90deg, #ff66cc, #66ccff);
   border: 2px solid white;
-  padding: 10px 20px;
+  padding: 10px 15px;
+  margin: 5px;
   color: white;
+  cursor: pointer;
   font-family: "Courier New", monospace;
-  cursor: pointer;
-  box-shadow: 0 0 15px #ff66cc;
+  box-shadow: 0 0 20px #66ccff;
   transition: 0.3s;
 }
 
-#musicBtn:hover {
+.controls button:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 25px #66ccff;
+  box-shadow: 0 0 30px #ff66cc;
 }
 
-/* Galería flotante */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 40px;
+/* Corazones */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 20px;
+  animation: floatUp 3s linear forwards;
 }
 
-.photo {
-  margin: 20px;
-  position: relative;
-  animation: float 4s ease-in-out infinite;
-}
-
-.photo:nth-child(2) { animation-delay: 1s; }
-.photo:nth-child(3) { animation-delay: 2s; }
-.photo:nth-child(4) { animation-delay: 3s; }
-.photo:nth-child(5) { animation-delay: 4s; }
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
-}
-
-.photo img {
-  width: 200px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px #ff66cc;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.photo img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 30px #66ccff;
-}
-
-.message {
-  margin-top: 10px;
-  font-size: 14px;
-  text-shadow: 0 0 10px #ff66cc;
-  min-height: 40px;
-}
-
-footer {
-  margin: 50px 0;
-  font-size: 12px;
-  opacity: 0.7;
+@keyframes floatUp {
+  to {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
 }
 </style>
 </head>
 
-<body>
+<body class="bg1">
 
-<div class="love-text">
-eres el amor de mi vida, mi vida<br>
-mi alma entera<br>
-te amo más de lo que sabes que te amo<br>
-te pienso todo el tiempo, te veo en todo lo que me dijiste que te gusta<br><br>
+<div class="stars" id="stars"></div>
 
-por un primer san Valentin juntitos, a la distancia, pero recuerda, que no siempre será así<br><br>
+<h1 class="glitch">+BLUEBLUE+ 💿</h1>
+<div class="dedication">para mi shariton 💙</div>
 
-ya llegará el día en que nos veamos<br>
-te amo mi shariton, te amo muxo muxo mass, 100pre y para 100pre 💗
+<div class="ep-description">
+Este EP se llama así porque desde que llegaste a mi vida, todo tiene un ++<br><br>
++color<br>
++más amor<br>
++tu 💙
+</div>
+
+<div class="song-visual">
+  <img id="songImage" src="angel1.jpg">
+  <div class="song-message" id="songMessage">
+    Tú y nadie más, siempre tú 💗
+  </div>
 </div>
 
 <div class="player">
-  <button id="musicBtn" onclick="toggleMusic()">▶ Shariton Player 2004</button>
+  <div id="trackName">Now Playing: Vos y nadie +++</div>
+  <div class="controls">
+    <button onclick="prevSong()">⏮</button>
+    <button onclick="toggleMusic()" id="playBtn">▶</button>
+    <button onclick="nextSong()">⏭</button>
+  </div>
 </div>
 
-<audio id="bg-music" loop>
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
-
-<div class="gallery">
-
-  <div class="photo">
-    <img src="angel1.jpg" onclick="changeMessage(0)">
-    <div class="message" id="msg0"></div>
-  </div>
-
-  <div class="photo">
-    <img src="angel2.jpg" onclick="changeMessage(1)">
-    <div class="message" id="msg1"></div>
-  </div>
-
-  <div class="photo">
-    <img src="angel3.jpg" onclick="changeMessage(2)">
-    <div class="message" id="msg2"></div>
-  </div>
-
-  <div class="photo">
-    <img src="angel4.jpg" onclick="changeMessage(3)">
-    <div class="message" id="msg3"></div>
-  </div>
-
-  <div class="photo">
-    <img src="angel5.jpg" onclick="changeMessage(4)">
-    <div class="message" id="msg4"></div>
-  </div>
-
-</div>
-
-<footer>
-Shariton.exe — powered by Mako 💻🩷
-</footer>
+<audio id="audioPlayer"></audio>
 
 <script>
-const music = document.getElementById("bg-music");
-const button = document.getElementById("musicBtn");
-
-function toggleMusic() {
-  if (music.paused) {
-    music.play();
-    button.innerHTML = "⏸ Shariton Player 2004";
-  } else {
-    music.pause();
-    button.innerHTML = "▶ Shariton Player 2004";
-  }
+/* Estrellas */
+const starsContainer = document.getElementById("stars");
+for (let i = 0; i < 100; i++) {
+  const star = document.createElement("div");
+  star.classList.add("star");
+  star.style.top = Math.random() * 100 + "vh";
+  star.style.left = Math.random() * 100 + "vw";
+  star.style.animationDuration = (Math.random() * 2 + 1) + "s";
+  starsContainer.appendChild(star);
 }
 
-const phrases = [
-  ["Eres mi universo entero 💫", "Tu sonrisa me salva todos los días ✨", "Siempre tú, siempre nosotros 💗"],
-  ["Me encantas más cada día 💙", "Eres mi pensamiento favorito 🩷", "Contigo todo es mejor 🌸"],
-  ["Mi paz tiene tu nombre 💞", "Tu voz es mi lugar seguro 🌌", "Te elegiría mil veces 💿"],
-  ["Eres mi sueño bonito 💭", "Te amo más allá del tiempo ⏳", "Mi corazón es tuyo 💓"],
-  ["Siempre tú, 100pre 💗", "Mi shariton hermosa 🩷", "Para 100pre y más allá 🌙"]
+const songs = [
+  {
+    name: "Vos y nadie +++",
+    file: "vos_y_nadie.mp3",
+    image: "angel1.jpg",
+    message: "Tú y nadie más, siempre tú 💗",
+    bg: "bg1"
+  },
+  {
+    name: "Si llego a verte",
+    file: "si_llego_a_verte.mp3",
+    image: "angel2.jpg",
+    message: "Si llego a verte, te abrazaría por todo el tiempo perdido 💙",
+    bg: "bg2"
+  },
+  {
+    name: "x100prestare",
+    file: "x100prestare.mp3",
+    image: "angel3.jpg",
+    message: "Te amaré x100prestare y más allá del tiempo ✨",
+    bg: "bg3"
+  }
 ];
 
-let counters = [0,0,0,0,0];
+let currentSong = 0;
 
-function changeMessage(index) {
-  const messageBox = document.getElementById("msg" + index);
-  messageBox.innerHTML = phrases[index][counters[index]];
-  counters[index]++;
-  if (counters[index] >= phrases[index].length) {
-    counters[index] = 0;
+const audio = document.getElementById("audioPlayer");
+const trackName = document.getElementById("trackName");
+const playBtn = document.getElementById("playBtn");
+const songImage = document.getElementById("songImage");
+const songMessage = document.getElementById("songMessage");
+const body = document.body;
+
+function createHearts() {
+  for (let i = 0; i < 6; i++) {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 3000);
   }
 }
+
+function loadSong(index) {
+  body.className = songs[index].bg;
+
+  songImage.classList.add("fade");
+  setTimeout(() => {
+    songImage.src = songs[index].image;
+    songMessage.innerHTML = songs[index].message;
+    trackName.innerHTML = "Now Playing: " + songs[index].name;
+    songImage.classList.remove("fade");
+  }, 400);
+
+  audio.src = songs[index].file;
+  createHearts();
+}
+
+function toggleMusic() {
+  if (audio.paused) {
+    audio.play();
+    playBtn.innerHTML = "⏸";
+  } else {
+    audio.pause();
+    playBtn.innerHTML = "▶";
+  }
+}
+
+function nextSong() {
+  currentSong = (currentSong + 1) % songs.length;
+  loadSong(currentSong);
+  audio.play();
+  playBtn.innerHTML = "⏸";
+}
+
+function prevSong() {
+  currentSong = (currentSong - 1 + songs.length) % songs.length;
+  loadSong(currentSong);
+  audio.play();
+  playBtn.innerHTML = "⏸";
+}
+
+audio.addEventListener("ended", nextSong);
+
+loadSong(currentSong);
 </script>
 
 </body>
 </html>
+
